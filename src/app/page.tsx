@@ -1,103 +1,322 @@
+"use client";
 import Image from "next/image";
+import Link from "next/link";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { useState } from "react";
+import Popup from "@/components/Home/Popup";
+
+function NextArrow(props: {
+  className?: string;
+  style?: React.CSSProperties;
+  onClick?: () => void;
+}) {
+  const { onClick } = props;
+  return (
+    <div
+      onClick={onClick}
+      className="absolute top-1/3  -right-5 cursor-pointer hover:scale-110 transition-transform z-30"
+    >
+      <Image
+        src={"/images/arrow-right.png"}
+        alt="Next"
+        width={32}
+        height={50}
+      />
+    </div>
+  );
+}
+
+function PrevArrow(props: {
+  className?: string;
+  style?: React.CSSProperties;
+  onClick?: () => void;
+}) {
+  const { onClick } = props;
+  return (
+    <div
+      onClick={onClick}
+      className="absolute top-1/3  -left-5 cursor-pointer hover:scale-110 transition-transform z-30"
+    >
+      <Image
+        src={"/images/arrow-left.png"}
+        alt="Previous"
+        width={32}
+        height={50}
+      />
+    </div>
+  );
+}
+
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+  className: "w-full h-full",
+  swipeToSlide: true,
+  touchThreshold: 10,
+  responsive: [
+    {
+      breakpoint: 2565,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 1536,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 960,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 650,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+  ],
+};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  const handleImageClick = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    setSelectedImage("");
+  };
+
+  return (
+    <main className=" w-full h-full mt-15 text-brand-orange bg-[#080401]">
+      <Image
+        src="/images/logo/Banner.png"
+        alt="Next.js logo"
+        width={2000}
+        height={500}
+        className="object-contain w-full h-full"
+      />
+
+      <div className="flex flex-row items-start justify-start gap-1 mt-15">
+        <Link href="/" className="bg-[#222222] rounded-full">
+          <Image src="/svg/X.svg" alt="contact" width={44} height={44} />
+        </Link>
+        <Link href="/" className="bg-[#222222] rounded-full">
+          <Image src="/svg/Telegram.svg" alt="contact" width={44} height={44} />
+        </Link>
+        <Link href="/" className="bg-[#222222] rounded-full">
+          <Image src="/svg/Discord.svg" alt="contact" width={44} height={44} />
+        </Link>
+        <Link href="/" className="bg-[#222222] rounded-full">
+          <Image src="/svg/Facebook.svg" alt="contact" width={44} height={44} />
+        </Link>
+        <Link href="/">
+          <Image src="/svg/Global.svg" alt="contact" width={44} height={45} />
+        </Link>
+      </div>
+      <div className="flex flex-col items-start justify-start mt-5 gap-3 text-brand-light">
+        <h1 className="text-brand-orange text-5xl">
+          Move Build Up – Exclusive AMA series from Movement Hub Vietnam
+        </h1>
+        <p className="text-2xl">
+          Move Build Up is a series of AMA/ecosystem interviews @movementlabsxyz
+          in Vietnamese to highlight the voices of the people behind the
+          projects being built on the Movement ecosystem, from programmers,
+          founders, marketing experts to silent builders.
+        </p>
+        <p className="text-2xl">
+          With each episode, Movement Hub will invite prominent figures in the
+          ecosystem – from prominent projects to influential individuals – to
+          chat, share real stories, strategic perspectives, and practical
+          experiences in the journey of building Web3.
+        </p>
+        <p className="text-2xl">
+          🎯 Move Build Up&apos;s goal is to create an open space where people
+          can learn, connect and together build a strong Movement Builders
+          community in Vietnam 🇻🇳 .
+        </p>
+        <p className="text-2xl">
+          With the compass:
+          <br /> ✨ Community is an asset <br /> ✨ Technology needs a voice
+          from users <br /> ✨ Builder mindset is the foundation
+        </p>
+        <p className="text-2xl">
+          Let&apos;s move forward together – from builder to community, from
+          project to real application.
+        </p>
+        <p className="text-2xl">
+          🧵 Broadcast schedule and guests will be continuously updated in the
+          comments section below, hope everyone follows. 👑
+        </p>
+      </div>
+      <div className="flex flex-col items-start justify-start mt-5 gap-10 text-brand-light">
+        <h1 className="text-brand-orange text-5xl font-semibold">
+          Upcoming Events:
+        </h1>
+        <div className="flex flex-row items-start justify-start gap-10">
+          <div className="hidden md:block items-start justify-start gap-3">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/images/events/event.png"
+              alt="Next.js logo"
+              width={800}
+              height={500}
+              className="object-contain"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+          <div className="flex flex-col items-start justify-start gap-3">
+            <p className="text-3xl font-semibold">Move Build UP | Ep 1</p>
+            <div className="text-2xl flex flex-row items-start justify-start gap-3">
+              <p className="font-bold">Host:</p> Yutah
+            </div>
+            <div className="text-xl sm:text-2xl sm:flex sm:flex-row items-start justify-start gap-3">
+              <p className="font-bold">Guest:</p>Julie (SilverBack), Sweet
+              (Fouder Akai NFT) , Ivei (Head of BD SMURF)
+            </div>
+            <div className="w-full flex flex-row flex-wrap items-center justify-between gap-4">
+              <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center p-10 ">
+                <p className="font-bold text-2xl">24</p>
+                <p>Days</p>
+              </div>
+              <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center p-10">
+                <p className="font-bold text-2xl">24</p>
+                <p>Days</p>
+              </div>
+              <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center p-10">
+                <p className="font-bold text-2xl">24</p>
+                <p>Days</p>
+              </div>
+              <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center p-10">
+                <p className="font-bold text-2xl">24</p>
+                <p>Days</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </div>
+      <div className="flex flex-col items-start justify-start mt-5 gap-10 text-brand-light">
+        <h1 className="text-brand-orange text-5xl font-semibold">
+          Last Events:
+        </h1>
+        <div className="relative w-full  px-3">
+          <div className="slider-container">
+            <div className="mx-5">
+              <Slider {...settings}>
+                <div
+                  onClick={() => handleImageClick("/images/events/event.png")}
+                >
+                  <Image
+                    src="/images/events/event.png"
+                    alt=""
+                    width={700}
+                    height={500}
+                    className="object-contain w-[80%]  translate-x-[13%] translate-y-[10%] cursor-pointer"
+                  />
+                </div>
+
+                <div
+                  onClick={() => handleImageClick("/images/events/event1.png")}
+                >
+                  <Image
+                    src="/images/events/event1.png"
+                    alt=""
+                    width={600}
+                    height={500}
+                    className="object-contain w-[80%]  translate-x-[13%] translate-y-[10%] cursor-pointer"
+                  />
+                </div>
+
+                <div
+                  onClick={() => handleImageClick("/images/events/event.png")}
+                >
+                  <Image
+                    src="/images/events/event.png"
+                    alt=""
+                    width={600}
+                    height={500}
+                    className="object-contain w-[80%]  translate-x-[13%] translate-y-[10%] cursor-pointer"
+                  />
+                </div>
+                <div
+                  onClick={() => handleImageClick("/images/events/event1.png")}
+                >
+                  <Image
+                    src="/images/events/event1.png"
+                    alt=""
+                    width={600}
+                    height={500}
+                    className="object-contain w-[80%]  translate-x-[13%] translate-y-[10%] cursor-pointer"
+                  />
+                </div>
+              </Slider>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col items-center justify-center mt-5 gap-10 text-brand-light">
+        <Image
+          src="/images/logo/contact.png"
+          alt=""
+          width={500}
+          height={500}
+          className="object-contain"
+        />
+        <p className="text-3xl md:text-7xl text-[#E1FF00] text-center font-semibold">
+          Contact to Become a Guest
+        </p>
+        <p className=" text-xl md:text-3xl text-center pl-20 pr-20">
+          Interested in joining as a guest? Contact us to share your Web3
+          expertise at our events. Let&apos;s build the future together!
+        </p>
+        <div
+          className="flex flex-row text-center items-center justify-center gap-10 bg-[#F6891E] text-xl md:text-3xl p-5 text-white font-semibold"
+          style={{
+            clipPath:
+              "polygon(10% 0%, 100% 0, 100% 75%, 90% 100%, 0 100%, 0 25%)",
+          }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <p>CONTACT US</p>
+        </div>
+      </div>
+
+      {showPopup && (
+        <Popup imageSrc={selectedImage} onClose={handleClosePopup} />
+      )}
+    </main>
   );
 }
