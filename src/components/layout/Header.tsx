@@ -21,69 +21,61 @@ const Header = () => {
 
   return (
     <motion.header
-      className="p-5 text-white"
+      className=" text-white"
       initial="hidden"
       animate="visible"
       variants={headerVariants}
     >
-      <div className="flex items-center  justify-between z-2 relative md:bg-transparent ">
-        <Link href="/" className="px-4 items-center justify-center">
+      <div className="flex items-center  justify-between translate-y-5 z-2 relative md:bg-transparent ">
+        <Link href="/" className="px-5 items-center justify-center">
           <Image
             src="/images/logo/Movementhubvn.png"
             alt="Movementhubvn"
-            width={44}
-            height={45}
+            width={80}
+            height={80}
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex md:gap-5 lg:gap-10 uppercase bg-transparent ml-4 transition-colors ">
+        <div className="hidden md:flex justify-evenly md:gap-5 lg:gap-10 uppercase bg-transparent ml-4 transition-colors ">
           <Link
             href="/"
-            className={`border-rounded-full hover:border-b-2 hover:border-t-2  border-white transform hover:scale-105 transition-colors duration-200 ${
-              pathname === "/"
-                ? "border-b-2 border-t-2 border-white "
-                : "text-white"
-            }`}
+            className={`link-animate-border text-white font-bold 
+    ${pathname === "/" ? "active text-[#fff91b]" : ""}
+  `}
           >
             ABOUT
           </Link>
           <Link
             href="/utilities"
-            className={`hover:border-b-2 hover:border-t-2 border-white  transition-colors duration-200 ${
-              pathname === "/utilities"
-                ? "border-b-2 border-t-2 border-white "
-                : "text-white"
-            }`}
+            className={`link-animate-border text-white font-bold 
+    ${pathname === "/utilities" ? "active text-[#fff91b]" : ""}
+  `}
           >
             UTILITIES
           </Link>
           <Link
             href="/events"
-            className={`hover:border-b-2 hover:border-t-2 border-white  transition-colors duration-200 ${
-              pathname === "/events"
-                ? "border-b-2 border-t-2 border-white "
-                : "text-white"
-            }`}
+            className={`link-animate-border text-white font-bold 
+    ${pathname === "/events" ? "active text-[#fff91b]" : ""}
+  `}
           >
             EVENTS
           </Link>
           <Link
             href="/contact"
-            className={`hover:border-b-2 hover:border-t-2 border-white  transition-colors duration-200 ${
-              pathname === "/contact"
-                ? "border-b-2 border-t-2 border-white "
-                : "text-white"
-            }`}
+            className={`link-animate-border text-white font-bold 
+    ${pathname === "/contact" ? "active text-[#fff91b]" : ""}
+  `}
           >
-            CONTACT
+            CONTACT US
           </Link>
         </div>
 
         {/* Desktop LET'S TALK button */}
         <Link
           href="/"
-          className="hidden md:flex md:flex-row md:text-sm lg:text-[14px] items-center bg-[#f6891e] px-5 h-10 font-semibold  ml-20 "
+          className="hidden md:flex md:flex-row md:text-sm lg:text-[14px] items-center bg-[#f6891e] px-5 -translate-x-5 h-10 font-semibold   ml-20 "
           style={{
             clipPath:
               "polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%)",
@@ -108,7 +100,7 @@ const Header = () => {
           isMenuOpen ? "right-0" : "right-[-100%]"
         } w-full h-screen bg-black/95 z-100 transition-right duration-300 ease-in-out md:hidden`}
       >
-        <div className="flex flex-col items-center justify-center h-full p-8 gap-20">
+        <div className="flex flex-col items-center justify-between h-full p-8 gap-10">
           <Link
             href="/"
             className={`flex justify-center text-2xl font-medium text-[#ffdfbf] no-underline uppercase text-center transition-colors duration-300 ease-in-out`}
@@ -117,8 +109,8 @@ const Header = () => {
             <Image
               src="/images/logo/Movementhubvn.png"
               alt="Smurf Dashboard"
-              width={44}
-              height={45}
+              width={50}
+              height={50}
             />
           </Link>
           <Link
@@ -152,7 +144,7 @@ const Header = () => {
             }`}
             onClick={toggleMenu}
           >
-            Contact
+            Contact Us
           </Link>
           <Link
             href="/"

@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useState } from "react";
 import Popup from "@/components/Home/Popup";
+import { motion } from "framer-motion";
 
 function NextArrow(props: {
   className?: string;
@@ -109,6 +110,11 @@ const settings = {
   ],
 };
 
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
@@ -127,13 +133,19 @@ export default function Home() {
     <main className=" w-full h-full mt-15 text-brand-orange bg-[#080401]">
       <Image
         src="/images/logo/Banner.png"
-        alt="Next.js logo"
+        alt="logo"
         width={2000}
         height={500}
         className="object-contain w-full h-full"
       />
 
-      <div className="flex flex-row items-start justify-start gap-1 mt-15">
+      <motion.div
+        className="flex flex-row items-start justify-start gap-1 mt-15"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <Link href="/" className="bg-[#222222] rounded-full">
           <Image src="/svg/X.svg" alt="contact" width={44} height={44} />
         </Link>
@@ -149,9 +161,15 @@ export default function Home() {
         <Link href="/">
           <Image src="/svg/Global.svg" alt="contact" width={44} height={45} />
         </Link>
-      </div>
-      <div className="flex flex-col items-start justify-start mt-5 gap-3 text-brand-light">
-        <h1 className="text-brand-orange text-5xl">
+      </motion.div>
+      <motion.div
+        className="flex flex-col items-start justify-start mt-5 gap-3 text-brand-light"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <h1 className="text-brand-orange text-3xl lg:text-4xl xl:text-5xl">
           Move Build Up – Exclusive AMA series from Movement Hub Vietnam
         </h1>
         <p className="text-2xl">
@@ -184,9 +202,15 @@ export default function Home() {
           🧵 Broadcast schedule and guests will be continuously updated in the
           comments section below, hope everyone follows. 👑
         </p>
-      </div>
-      <div className="flex flex-col items-start justify-start mt-5 gap-10 text-brand-light">
-        <h1 className="text-brand-orange text-5xl font-semibold">
+      </motion.div>
+      <motion.div
+        className="flex flex-col items-start justify-start mt-5 gap-10 text-brand-light"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <h1 className="text-brand-orange text-5xl font-semibold text-center sm:text-start">
           Upcoming Events:
         </h1>
         <div className="flex flex-row items-start justify-start gap-10">
@@ -200,7 +224,9 @@ export default function Home() {
             />
           </div>
           <div className="flex flex-col items-start justify-start gap-3">
-            <p className="text-3xl font-semibold">Move Build UP | Ep 1</p>
+            <p className="text-3xl font-semibold text-center sm:text-start">
+              Move Build UP | Ep 1
+            </p>
             <div className="text-2xl flex flex-row items-start justify-start gap-3">
               <p className="font-bold">Host:</p> Yutah
             </div>
@@ -228,9 +254,15 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex flex-col items-start justify-start mt-5 gap-10 text-brand-light">
-        <h1 className="text-brand-orange text-5xl font-semibold">
+      </motion.div>
+      <motion.div
+        className="flex flex-col items-start justify-start mt-5 gap-10 text-brand-light"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <h1 className="text-brand-orange text-5xl font-semibold text-center sm:text-start">
           Last Events:
         </h1>
         <div className="relative w-full  px-3">
@@ -287,8 +319,14 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex flex-col items-center justify-center mt-5 gap-10 text-brand-light">
+      </motion.div>
+      <motion.div
+        className="flex flex-col items-center justify-center mt-5 gap-10 text-brand-light"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <Image
           src="/images/logo/contact.png"
           alt=""
@@ -299,7 +337,7 @@ export default function Home() {
         <p className="text-3xl md:text-7xl text-[#E1FF00] text-center font-semibold">
           Contact to Become a Guest
         </p>
-        <p className=" text-xl md:text-3xl text-center pl-20 pr-20">
+        <p className="  text-sm sm:text-xl md:text-3xl text-center pl-20 pr-20">
           Interested in joining as a guest? Contact us to share your Web3
           expertise at our events. Let&apos;s build the future together!
         </p>
@@ -312,7 +350,7 @@ export default function Home() {
         >
           <p>CONTACT US</p>
         </div>
-      </div>
+      </motion.div>
 
       {showPopup && (
         <Popup imageSrc={selectedImage} onClose={handleClosePopup} />
