@@ -309,18 +309,28 @@ const Utilities = () => {
           className="relative overflow-hidden"
           style={{
             maskImage:
-              "radial-gradient(ellipse at center, black 37%, transparent 95%)",
+              "linear-gradient(to top, transparent, black 10%, black 90%, transparent)",
             WebkitMaskImage:
-              "radial-gradient(ellipse at center, black 40%, transparent 100%)",
+              "linear-gradient(to top, transparent, black 10%, black 90%, transparent)",
           }}
         >
-          <Image
-            src="/images/logo/contact.png"
-            alt=""
-            width={500}
-            height={500}
-            className="object-contain"
-          />
+          <div
+            className="relative overflow-hidden"
+            style={{
+              maskImage:
+                "radial-gradient(ellipse at 50% 50%, black 50%, transparent 100%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse at 50% 50%, black 50%, transparent 100%)",
+            }}
+          >
+            <Image
+              src="/images/logo/contact.png"
+              alt=""
+              width={500}
+              height={500}
+              className="object-contain"
+            />
+          </div>
         </div>
         <p className="text-3xl md:text-7xl text-[#E1FF00] text-center font-semibold">
           Contact to Become a Guest
