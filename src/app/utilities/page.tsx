@@ -309,7 +309,7 @@ const Utilities = () => {
           className="relative overflow-hidden"
           style={{
             maskImage:
-              "radial-gradient(ellipse at center, black 50%, transparent 100%)",
+              "radial-gradient(ellipse at center, black 37%, transparent 95%)",
             WebkitMaskImage:
               "radial-gradient(ellipse at center, black 40%, transparent 100%)",
           }}
