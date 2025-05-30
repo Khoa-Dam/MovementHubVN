@@ -1,4 +1,4 @@
-import Events from "@/components/utilities/Events";
+import Events from "@/components/Home/Events";
 
 const EventsPage = () => {
   return <Events />;

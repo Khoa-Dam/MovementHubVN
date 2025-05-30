@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="relative w-full h-full mt-15 text-brand-orange bg-[#080401]">
+    <footer className="relative w-full h-full mt-20 text-brand-orange bg-[#080401]">
       <div className="absolute left-1/2 transform -translate-x-1/2 translate-y-[-3%] sm:translate-y-[-13%] md:translate-y-[-15%] lg:translate-y-[-21%]">
         <div className="flex flex-col items-center justify-center gap-1 sm:p-20 sm:gap-10">
           <h1 className="w-full text-2xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#E1FF00] text-center whitespace-nowrap">

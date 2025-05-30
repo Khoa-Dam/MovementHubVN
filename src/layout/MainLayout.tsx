@@ -10,7 +10,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       className={`bg-[#050302]  ${
         isContactPage
           ? "bg-[url('/images/footer/bird.png')] bg-cover bg-center"
-          : "p-3"
+          : ""
       }  w-full min-h-screen overflow-hidden `}
     >
       <Header />

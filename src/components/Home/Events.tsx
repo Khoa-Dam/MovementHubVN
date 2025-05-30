@@ -9,7 +9,7 @@ const teamVariants = {
 const Events = () => {
   return (
     <motion.div
-      className="flex flex-col justify-center items-center mt-20 mb-20 "
+      className="flex flex-col justify-center items-center mt-20 mb-20 p-5"
       variants={teamVariants}
       initial="hidden"
       whileInView="visible"
