@@ -305,13 +305,23 @@ const Utilities = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <Image
-          src="/images/logo/contact.png"
-          alt=""
-          width={500}
-          height={500}
-          className="object-contain"
-        />
+        <div
+          className="relative overflow-hidden"
+          style={{
+            maskImage:
+              "radial-gradient(ellipse at center, black 50%, transparent 100%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse at center, black 40%, transparent 100%)",
+          }}
+        >
+          <Image
+            src="/images/logo/contact.png"
+            alt=""
+            width={500}
+            height={500}
+            className="object-contain"
+          />
+        </div>
         <p className="text-3xl md:text-7xl text-[#E1FF00] text-center font-semibold">
           Contact to Become a Guest
         </p>

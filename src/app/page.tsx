@@ -193,9 +193,18 @@ export default function Home() {
           />
         </motion.div>
       </motion.div>
-      <div className="flex flex-col justify-center items-center bg-[url('/images/utilities/line.png')] bg-cover bg-center p-5 relative bg-no-repeat w-full">
-        <div className="absolute inset-0 bg-black/50"></div>
-        <div className="w-full flex flex-row flex-wrap items-center justify-between gap-10 p-10 relative z-10">
+      <div
+        className="flex flex-col justify-center items-center bg-[url('/images/utilities/line.png')] bg-cover p-5 relative bg-no-repeat w-full h-auto md:h-[350px]"
+        style={{ backgroundPosition: "center 40%" }}
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(ellipse 100% 50%  at 50% 70%, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.87 ) 115%)",
+          }}
+        ></div>
+        <div className="w-full flex flex-row flex-wrap items-center justify-between gap-10 p-10 relative z-10 sm:translate-y-[50px]">
           <Link href="/">
             <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center cursor-pointer p-10">
               <p className="font-bold text-2xl">Move Confession</p>
