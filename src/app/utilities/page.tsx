@@ -4,8 +4,7 @@ import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState } from "react";
-import Popup from "@/components/Home/Popup";
+
 import { motion } from "framer-motion";
 
 function NextArrow(props: {
@@ -116,19 +115,6 @@ const sectionVariants = {
 };
 
 const Utilities = () => {
-  const [showPopup, setShowPopup] = useState(false);
-  const [selectedImage, setSelectedImage] = useState("");
-
-  const handleImageClick = (imageSrc: string) => {
-    setSelectedImage(imageSrc);
-    setShowPopup(true);
-  };
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
-    setSelectedImage("");
-  };
-
   return (
     <main className=" w-full h-full mt-15 text-brand-orange bg-[#080401]">
       <Image
@@ -269,50 +255,42 @@ const Utilities = () => {
           <div className="slider-container">
             <div className="mx-5">
               <Slider {...settings}>
-                <div
-                  onClick={() => handleImageClick("/images/events/event.png")}
-                >
+                <div>
                   <Image
                     src="/images/events/event.png"
                     alt=""
                     width={700}
                     height={500}
-                    className="object-contain w-[80%]  translate-x-[13%] translate-y-[10%] cursor-pointer"
+                    className="object-contain w-[80%]  translate-x-[13%] translate-y-[10%]"
                   />
                 </div>
 
-                <div
-                  onClick={() => handleImageClick("/images/events/event1.png")}
-                >
+                <div>
                   <Image
                     src="/images/events/event1.png"
                     alt=""
                     width={600}
                     height={500}
-                    className="object-contain w-[80%]  translate-x-[13%] translate-y-[10%] cursor-pointer"
+                    className="object-contain w-[80%]  translate-x-[13%] translate-y-[10%]"
                   />
                 </div>
 
-                <div
-                  onClick={() => handleImageClick("/images/events/event.png")}
-                >
+                <div>
                   <Image
                     src="/images/events/event.png"
                     alt=""
                     width={600}
                     height={500}
-                    className="object-contain w-[80%]  translate-x-[13%] translate-y-[10%] cursor-pointer"
+                    className="object-contain w-[80%]  translate-x-[13%] translate-y-[10%]"
                   />
                 </div>
-                <div
-                  onClick={() => handleImageClick("/images/events/event1.png")}
-                >
+                <div>
                   <Image
                     src="/images/events/event1.png"
                     alt=""
                     width={600}
                     height={500}
-                    className="object-contain w-[80%]  translate-x-[13%] translate-y-[10%] cursor-pointer"
+                    className="object-contain w-[80%]  translate-x-[13%] translate-y-[10%] "
                   />
                 </div>
               </Slider>
@@ -351,10 +329,6 @@ const Utilities = () => {
           <p>CONTACT US</p>
         </div>
       </motion.div>
-
-      {showPopup && (
-        <Popup imageSrc={selectedImage} onClose={handleClosePopup} />
-      )}
     </main>
   );
 };

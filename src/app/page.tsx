@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import Events from "@/components/Home/Events";
+import Link from "next/link";
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -146,13 +147,14 @@ export default function Home() {
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ amount: 0.3 }}
+        viewport={{ amount: 0.3, once: true }}
       >
         <motion.div
           className="flex flex-row w-full mt-5 justify-between p-5"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ amount: 0.3, once: true }}
         >
           <div className="flex flex-col justify-center ml-5 gap-0 text-white w-full sm:w-[50%] items-center text-center sm:text-left sm:items-start">
             <div className="mb-20">
@@ -194,25 +196,33 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center bg-[url('/images/utilities/line.png')] bg-cover bg-center p-5 relative bg-no-repeat w-full">
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="w-full flex flex-row flex-wrap items-center justify-between gap-10 p-10 relative z-10">
-          <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center  ">
-            <p className="font-bold text-2xl">Move Confession</p>
-          </div>
-          <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center p-10">
-            <p className="font-bold text-2xl">Move Build Up</p>
-          </div>
-          <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center p-10">
-            <p className="font-bold text-2xl">Move Meet Up</p>
-          </div>
-          <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center p-10">
-            <p className="font-bold text-2xl">Move Uni Tour</p>
-          </div>
+          <Link href="/">
+            <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center cursor-pointer p-10">
+              <p className="font-bold text-2xl">Move Confession</p>
+            </div>
+          </Link>
+          <Link href="/utilities">
+            <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center cursor-pointer p-10">
+              <p className="font-bold text-2xl">Move Build Up</p>
+            </div>
+          </Link>
+          <Link href="/">
+            <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center cursor-pointer p-10">
+              <p className="font-bold text-2xl">Move Meet Up</p>
+            </div>
+          </Link>
+          <Link href="/">
+            <div className="flex-1 roadmap-text-box bg-[#222222] flex flex-col text-center justify-center items-center cursor-pointer p-10">
+              <p className="font-bold text-2xl">Move Uni Tour</p>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="flex w-full flex-col">
         <div className="flex flex-row flex-wrap justify-center items-center gap-5 bg-[#222222] ">
           <div className="p-2">
             <button
-              className={`text-white text-2xl p-6 rounded-md w-[90%] h-[90%] flex items-center justify-center ${
+              className={`text-white text-2xl p-6 rounded-md w-[90%] h-[90%] flex items-center justify-center cursor-pointer ${
                 selectedButtonText === "Movement Leader" ? "bg-[#F6891E] " : ""
               }`}
               onClick={() => handleButtonClick("Movement Leader")}
@@ -222,7 +232,7 @@ export default function Home() {
           </div>
           <div className="p-2">
             <button
-              className={`text-white text-2xl p-6 rounded-md w-[90%] h-[90%] ${
+              className={`text-white text-2xl p-6 rounded-md w-[90%] h-[90%] flex items-center justify-center cursor-pointer ${
                 selectedButtonText === "Project Consulting"
                   ? "bg-[#F6891E]"
                   : ""
@@ -234,7 +244,7 @@ export default function Home() {
           </div>
           <div className="p-2">
             <button
-              className={`text-white text-2xl p-6 rounded-md w-[90%] h-[90%] ${
+              className={`text-white text-2xl p-6 rounded-md w-[90%] h-[90%] flex items-center justify-center cursor-pointer ${
                 selectedButtonText === "Community Building"
                   ? "bg-[#F6891E]"
                   : ""
@@ -246,7 +256,7 @@ export default function Home() {
           </div>
           <div className="p-2">
             <button
-              className={`text-white text-2xl p-6 rounded-md w-[90%] h-[90%] flex items-center justify-center ${
+              className={`text-white text-2xl p-6 rounded-md w-[90%] h-[90%] flex items-center justify-center cursor-pointer ${
                 selectedButtonText === "Web3 Partnership" ? "bg-[#F6891E]" : ""
               }`}
               onClick={() => handleButtonClick("Web3 Partnership")}
@@ -260,7 +270,7 @@ export default function Home() {
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.3 }}
+          viewport={{ amount: 0.3, once: true }}
         >
           <div className="flex flex-row w-full mt-10 justify-between items-center">
             <AnimatePresence mode="wait">
